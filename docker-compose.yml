@@ -1,0 +1,15 @@
+services:
+  api:
+    # Constrói a imagem a partir do Dockerfile no diretório atual.
+    # O código da aplicação é copiado para dentro da imagem durante este passo.
+    build: .
+    container_name: api
+    ports:
+      # Mapeia a porta 8000 do seu computador (host) para a porta 8000 do contêiner.
+      - "8000:8000"
+    # O comando para iniciar a aplicação é herdado do CMD no Dockerfile.
+    # Sem um volume, o banco de dados SQLite será criado dentro do contêiner
+    # e será perdido se o contêiner for removido.
+
+    volumes:
+      - .:/app
